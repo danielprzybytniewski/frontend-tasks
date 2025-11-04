@@ -46,6 +46,7 @@ export default defineConfig([
         },
       ],
       "simple-import-sort/exports": "error",
+      "react-refresh/only-export-components": "off",
     },
   },
 ]);
