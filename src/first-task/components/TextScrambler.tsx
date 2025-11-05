@@ -4,9 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Shuffle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FileInput from "@/first-task/components/FileInput";
+import { ResultArea } from "@/first-task/components/ResultArea";
 import { fileSchema, FileValidation } from "@/first-task/types/file.schema";
 import { scrambleText } from "@/first-task/utils/scramble";
-import { ResultArea } from "./ResultArea";
 
 export default function TextScrambler() {
   const [output, setOutput] = useState("");
@@ -28,7 +28,7 @@ export default function TextScrambler() {
   const error = errors.file as FieldError | undefined;
 
   return (
-    <div className="flex flex-col items-center justify-center p-6">
+    <div className="flex flex-col items-center p-6 pb-10">
       <div className="w-full max-w-xl rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-gray-200">
         <h3 className="mb-6 flex items-center justify-center gap-3 text-center text-3xl font-extrabold text-blue-700 drop-shadow-sm">
           <Shuffle className="inline size-8 text-blue-500" /> Text Scrambler

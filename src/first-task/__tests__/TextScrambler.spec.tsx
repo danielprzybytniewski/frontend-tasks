@@ -37,10 +37,10 @@ describe("TextScrambler", () => {
     jest.clearAllMocks();
   });
 
-  test("renders heading with icon", () => {
+  test("renders heading", () => {
     setup();
     expect(
-      screen.getByRole("heading", { name: /Text Scrambler/i }),
+      screen.getByRole("heading", { name: /Text Scrambler/i, level: 3 }),
     ).toBeInTheDocument();
   });
 

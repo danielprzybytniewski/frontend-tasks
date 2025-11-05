@@ -1,4 +1,6 @@
-## Code for Task1 is in [src/first-task](https://github.com/danielprzybytniewski/frontend-tasks/tree/main/src/first-task) folder.
+## Code for Task 1 is in [src/first-task](https://github.com/danielprzybytniewski/frontend-tasks/tree/main/src/first-task) folder.
+
+## Code for Task 2 is in [src/second-task](https://github.com/danielprzybytniewski/frontend-tasks/tree/main/src/second-task) folder.
 
 ## Installation
 

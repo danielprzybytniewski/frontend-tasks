@@ -12,13 +12,12 @@ describe("App", () => {
     ).toBeInTheDocument();
   });
 
-  test("renders TextScrambler component", () => {
+  test("renders TaskTabs component", () => {
     expect(
       screen.getByRole("heading", { name: /First Task - Text Scrambler/i }),
     ).toBeInTheDocument();
-    expect(screen.getByLabelText(/text file/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /Process File/i }),
+      screen.getByRole("heading", { name: /Second Task - PESEL Checker/i }),
     ).toBeInTheDocument();
   });
 });
