@@ -16,10 +16,9 @@ const config: Config = {
     "!eslint.config.js",
     "!vite.config.ts",
     "!**/src/main.tsx",
-    "!**/src/types/**",
+    "!**/src/**/types/**",
     "!**/src/components/ui/**",
     "!**/src/lib/**",
-    "!**/src/first-task/types/**",
   ],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
