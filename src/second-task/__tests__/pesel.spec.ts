@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { decodePesel, isPeselValid } from "@/second-task/utils/pesel";
 
 describe("isPeselValid", () => {
@@ -52,23 +53,23 @@ describe("decodePesel", () => {
   });
 
   test("decrements age when birthday hasn't occurred yet", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("2025-11-04"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2025-11-04"));
 
     const result = decodePesel("00320312345");
     expect(result.birthDate).toBe("3.12.2000");
     expect(result.age).toBe(24);
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test("correctly calculates age when birthday is today", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("2025-11-05"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2025-11-05"));
 
     const result = decodePesel("00310514996");
     expect(result.age).toBe(25);
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
