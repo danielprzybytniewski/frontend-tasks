@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import App from "@/App";
+import { renderWithQueryClient } from "@/lib/test-utils";
 
 describe("App", () => {
   beforeEach(() => {
-    render(<App />);
+    renderWithQueryClient(<App />);
   });
 
   test("renders title", () => {
@@ -18,6 +19,9 @@ describe("App", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /Second Task - PESEL Checker/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Third Task - Users/i }),
     ).toBeInTheDocument();
   });
 });

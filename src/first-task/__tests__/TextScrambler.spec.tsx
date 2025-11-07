@@ -1,14 +1,19 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import TextScrambler from "@/first-task/components/TextScrambler";
 import { scrambleText } from "@/first-task/utils/scramble";
 
-jest.mock("@/first-task/utils/scramble", () => ({
-  scrambleText: jest.fn().mockReturnValue("scrambled text output"),
+vi.mock("@/first-task/utils/scramble", () => ({
+  scrambleText: vi.fn().mockReturnValue("scrambled text output"),
 }));
 
 describe("TextScrambler", () => {
-  const mockScrambleText = scrambleText as jest.Mock;
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  const mockScrambleText = scrambleText as ReturnType<typeof vi.fn>;
 
   const setup = () => {
     render(<TextScrambler />);
@@ -26,7 +31,7 @@ describe("TextScrambler", () => {
     } = {},
   ) => {
     const file = new File([content], name, { type });
-    file.text = jest.fn().mockResolvedValue(content);
+    file.text = vi.fn().mockResolvedValue(content);
 
     const input = screen.getByLabelText(label);
     await user.upload(input, file);
@@ -34,7 +39,7 @@ describe("TextScrambler", () => {
   };
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test("renders heading", () => {

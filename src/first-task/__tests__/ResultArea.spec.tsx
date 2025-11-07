@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { ResultArea } from "@/first-task/components/ResultArea";
 
 describe("ResultArea", () => {
@@ -23,9 +24,9 @@ describe("ResultArea", () => {
 
   test("copies text to clipboard and shows copied state", async () => {
     const user = userEvent.setup();
-    const writeTextMock = jest
+    const writeTextMock = vi
       .spyOn(navigator.clipboard, "writeText")
-      .mockResolvedValueOnce();
+      .mockResolvedValueOnce(undefined);
 
     render(<ResultArea output={sampleText} />);
     const copyButton = screen.getByRole("button", {
@@ -49,9 +50,9 @@ describe("ResultArea", () => {
   test("triggers download when clicking download button", async () => {
     const user = userEvent.setup();
 
-    const createObjectURLMock = jest.fn().mockReturnValue("blob:url");
-    const revokeObjectURLMock = jest.fn();
-    const clickMock = jest.fn();
+    const createObjectURLMock = vi.fn().mockReturnValue("blob:url");
+    const revokeObjectURLMock = vi.fn();
+    const clickMock = vi.fn();
 
     global.URL.createObjectURL = createObjectURLMock;
     global.URL.revokeObjectURL = revokeObjectURLMock;
@@ -73,6 +74,6 @@ describe("ResultArea", () => {
 
     expect(downloadButton).toBeInTheDocument();
 
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 });

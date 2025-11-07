@@ -1,10 +1,11 @@
 import { UseFormRegister } from "react-hook-form";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import FileInput from "@/first-task/components/FileInput";
 import type { FileValidation } from "@/first-task/types/file.schema";
 
-const mockRegister = jest.fn() as UseFormRegister<FileValidation>;
+const mockRegister = vi.fn() as UseFormRegister<FileValidation>;
 
 describe("FileInput", () => {
   test("renders label and file input correctly", () => {
